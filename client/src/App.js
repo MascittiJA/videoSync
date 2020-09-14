@@ -53,7 +53,7 @@ function App() {
           loop
           playing={playing}
           width='80%'
-          height='80%'
+          height='100%'
           onPause={() => {
             if (!updating) {
               socket.emit('pauseSRV');
