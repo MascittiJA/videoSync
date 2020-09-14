@@ -1,31 +1,44 @@
 import React, { useState, useEffect, useRef } from 'react';
-import ReactPlayer from 'react-player/youtube';
+import ReactPlayer from 'react-player/vimeo';
 import './App.css';
 
 import {socket} from "./service/socket";
 
 function App() {
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(true);
+  const [updating,setUpdating] = useState(false);
   const player = useRef(null);
 
+  const update = function(callback) {
+    setUpdating(true);
+    callback();
+    setTimeout(() => {
+      setUpdating(false);
+    }, 300);
+  }
+  
   useEffect(() => {
-    console.log("USE EFFECT - PAUSE!!!")
 
     socket.on('pause', () => {
       console.log("Pause - ", socket.id, Date.now());
-      setPlaying(false)
+      update(() => setPlaying(false));
     });
     
     socket.on('play', ({seekTime}) => {
       console.log("Play - ", socket.id, " - ", Date.now(), " - ", seekTime);
-      setPlaying(true);
+      update(() => setPlaying(true));
     });
 
-    return () => {
-      // unsubscribe from event for preventing memory leaks
-      socket.off('play');
-      socket.off('pause');
-    };
+    socket.on('seek', ({seekTime}) => {
+      console.log("Seek - ", socket.id, " - ", Date.now(), " - ", seekTime);
+      update(() => {
+        if (seekTime) {
+          player.current.seekTo(seekTime, 'seconds');
+        }
+        setPlaying(true);
+      });
+    });
+
   },[]);
 
   return (
@@ -35,20 +48,25 @@ function App() {
         <ReactPlayer 
           ref={player}
           className='react-player'
-          url='https://www.youtube.com/watch?v=bsJj-W_jNzs&ab_channel=DJMag'
+          url='https://vimeo.com/14878950'
           controls
           loop
           playing={playing}
           width='80%'
-          height='100%'
+          height='80%'
           onPause={() => {
-            if (playing) {
+            if (!updating) {
               socket.emit('pauseSRV');
             }
           }}
           onPlay={()=> {
-            if (!playing) {
+            if (!updating) {
               socket.emit('playSRV', {seekTime: player.current.getCurrentTime()})
+            }
+          }}
+          onSeek={()=> {
+            if (!updating) {
+              socket.emit('seekSRV', {seekTime: player.current.getCurrentTime(), seekID: socket.id})
             }
           }}
         />

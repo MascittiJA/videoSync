@@ -18,19 +18,20 @@ io.on('connection', (socket) => {
     });
 
     socket.on('pauseSRV', () => {
-        console.log("SERVER - Pause: ")
+        console.log("SERVER - Pause: ", socket.id)
         io.emit('pause');
     });
 
     socket.on('playSRV', seekTime => {
-        console.log("SERVER - Play: ", seekTime )
+        console.log("SERVER - Play: ", socket.id)
         io.emit('play', seekTime);
     });
 
-    // socket.on('seek', (seekTime) => {
-    //     console.log("SEEK", seekTime);
-    //     // io.emit('play');
-    // });
+    socket.on('seekSRV', seekTime => {
+        console.log("SEEK", seekTime);
+        io.emit('seek', seekTime);
+        // socket.broadcast.emit('seek', seekTime);
+    });
 
     console.log('Client add to party: ', socket.id);
     // if (party.length > 0) {
