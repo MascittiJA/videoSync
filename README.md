@@ -17,3 +17,8 @@ Una vez estén corriendo el video, se puede utilizar Play, Pause y moverse por l
 * Poder seleccionar el video a reproducir
 * Arreglar bug de inicio automático en producción
 * Sincronizar inmediatamente un nuevo integrante al conectarse
+
+## Demo
+
+[Link a la app en Heroku](https://polar-hollows-19993.herokuapp.com/)
+
