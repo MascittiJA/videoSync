@@ -8,7 +8,8 @@
     "dev": "nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "buildFront": "cd ../client && npm install && npm run build",
-    "build": "npm run buildFront && npm install && npm start"
+    "build": "npm run buildFront && npm install && npm start",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "keywords": [],
   "author": "",

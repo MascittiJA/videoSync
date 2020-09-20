@@ -1,0 +1,22 @@
+{
+  "name": "videoSync",
+  "version": "1.0.0",
+  "description": "Aplicación web desarrollada con NodeJS y ReactJS que sincroniza el video de todos los participantes conectados.",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd server && npm install && npm start",
+    "heroku-postbuild": "cd client && npm install && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MascittiJA/videoSync.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MascittiJA/videoSync/issues"
+  },
+  "homepage": "https://github.com/MascittiJA/videoSync#readme"
+}

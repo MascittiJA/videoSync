@@ -14,7 +14,7 @@ function App() {
     callback();
     setTimeout(() => {
       setUpdating(false);
-    }, 300);
+    }, 500);
   }
   
   useEffect(() => {
