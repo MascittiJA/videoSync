@@ -20,5 +20,5 @@ Una vez estén corriendo el video, se puede utilizar Play, Pause y moverse por l
 
 ## Demo
 
-[Link a la app en Heroku](https://polar-hollows-19993.herokuapp.com/)
+[Link a la app en Heroku](https://video-syncronization.herokuapp.com/)
 
