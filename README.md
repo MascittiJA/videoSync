@@ -14,8 +14,6 @@ Una vez estén corriendo el video, se puede utilizar Play, Pause y moverse por l
 ## Pendientes
 
 * Agregar test
-* Poder seleccionar el video a reproducir
-* Arreglar bug de inicio automático en producción
 * Sincronizar inmediatamente un nuevo integrante al conectarse
 
 ## Demo
