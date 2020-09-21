@@ -5,15 +5,24 @@ Aplicación web desarrollada con NodeJS y ReactJS que sincroniza el video de tod
 ## Instalación
 
 ```bash
-git clone https://github.com/MascittiJA/videoSync.git && cd videoSync/server/ && npm run build
+git clone https://github.com/MascittiJA/videoSync.git && cd videoSync/ && npm run build
 ```
 Luego, abrir distintas pestañas del navegador y colocar "http://localhost:5000/".
-Hay algún bug por lo cual a veces no comienzan automáticamente a reproducirse los videos y es necesario comenzar cada uno tocando el boton de "PLAY".
 Una vez estén corriendo el video, se puede utilizar Play, Pause y moverse por la barra de progreso.
+
+## e2e Test
+Abrir dos consolas en una levantar la app y en la otra correr los test.
+
+```bash
+git clone https://github.com/MascittiJA/videoSync.git && cd videoSync/ && npm run build
+```
+
+```bash
+cd videoSync/ && npm test
+```
 
 ## Pendientes
 
-* Agregar test
 * Sincronizar inmediatamente un nuevo integrante al conectarse
 
 ## Demo
