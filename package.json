@@ -19,5 +19,10 @@
   "bugs": {
     "url": "https://github.com/MascittiJA/videoSync/issues"
   },
-  "homepage": "https://github.com/MascittiJA/videoSync#readme"
+  "homepage": "https://github.com/MascittiJA/videoSync#readme",
+  "devDependencies": {
+    "chromedriver": "^85.0.1",
+    "geckodriver": "^1.20.0",
+    "nightwatch": "^1.4.3"
+  }
 }

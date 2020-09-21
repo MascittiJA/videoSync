@@ -5,6 +5,7 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
 
 function URLSelector(props) {
+    const socket = props.socket;
     const [url,setUrl] = useState('');
 
     return (
@@ -16,6 +17,7 @@ function URLSelector(props) {
         >
             <Grid item xs={9} sm={5} spacing={3}>
                 <TextField
+                    id="videoURL-textfield"
                     label="Video URL"
                     style={{ margin: 8 }}
                     placeholder=""
@@ -32,6 +34,7 @@ function URLSelector(props) {
             
             <Grid item xs={3} spacing={3}>
                 <Button
+                    id="videoURL-button"
                     style={{ margin: 20, minWidth: 150, maxWidth: 250 }}
                     fullWidth
                     variant="contained"
@@ -40,9 +43,9 @@ function URLSelector(props) {
                     size="large"
                     onClick={e => {
                         if (ReactPlayer.canPlay(url)) {
-                            props.socket.emit('changeSRV', {videoURL: url});
+                            socket.emit('changeSRV', {videoURL: url});
                         } else {
-                            alert("URL Alert!");
+                            alert("URL no válida!");
                         }
                     }}
                 >
